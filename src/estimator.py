@@ -86,7 +86,7 @@ def casesForVentilatorsByRequestedTime(iBRT):
     return c4Vent
 
 def dollarsInFlight(iBRT, pop,t2E, dI):
-    dIF = (iBRT * pop * dI)*t2E
+    dIF = (iBRT * pop * dI)/t2E
 
     return round(dIF)
 
