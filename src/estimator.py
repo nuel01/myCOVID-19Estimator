@@ -52,11 +52,11 @@ def currently__Infected(currently_Infected, val):
 def infectionsByRequestedTime(time, x, currentlyInfected):
   
   if time == 'days':        
-    iBRT = currentlyInfected * (2**(x//3))
+    iBRT = math.floor(currentlyInfected * (2**(x//3)))
   elif time == 'months':
-    iBRT = currentlyInfected * (2**((x*30)//3))
+    iBRT = math.floor(currentlyInfected * (2**((x*30)//3)))
   elif time == 'weeks':
-    iBRT = currentlyInfected * (2**((x*7)//3))
+    iBRT = math.floor(currentlyInfected * (2**((x*7)//3)))
   
 
   return iBRT
