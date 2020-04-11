@@ -64,12 +64,12 @@ def infectionsByRequestedTime(time, x, currentlyInfected):
 # Challenge 2
 
 def severeCasesByRequestedTime(iBRT):
-    sCBRT = round(iBRT * 0.15)
+    sCBRT = math.floor((iBRT * 0.15))
     
     return sCBRT
 def hospitalBedSpaceByRequestedTime(tHB,sCBRT):
 
-    hBS = round(tHB * 0.35)
+    hBS = math.floor((tHB * 0.35))
     hBSBRT = hBS - sCBRT
 
     return hBSBRT
@@ -77,18 +77,18 @@ def hospitalBedSpaceByRequestedTime(tHB,sCBRT):
 # Challenge 3
 
 def casesForICUByRequestedTime(iBRT):
-    c4ICU = round(iBRT * 0.05)
+    c4ICU = math.floor((iBRT * 0.05))
     return c4ICU
 
 def casesForVentilatorsByRequestedTime(iBRT):
-    c4Vent = round(iBRT * 0.02)
+    c4Vent = math.floor((iBRT * 0.02))
 
     return c4Vent
 
 def dollarsInFlight(iBRT, pop,t2E, dI):
     dIF = (iBRT * pop * dI)/t2E
 
-    return round(dIF)
+    return math.floor((dIF))
 
 
 def estimator(data):
