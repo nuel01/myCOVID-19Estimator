@@ -22,7 +22,7 @@ values = {
 
 'impact': {
   'currentlyInfected': 0,
-  'infectionByRequestedTime': 0,
+  'infectionsByRequestedTime': 0,
   'severeCasesByRequestedTime': 0,
   'totalHospitalBeds': 0,
   'casesForICUByRequestedTime': 0,
@@ -31,7 +31,7 @@ values = {
   },
 'severeImpact': {
   'currentlyInfected': 0,
-  'infectionByRequestedTime': 0,
+  'infectionsByRequestedTime': 0,
   'severeCasesByRequestedTime': 0,
   'totalHospitalBeds': 0,
   'casesForICUByRequestedTime': 0,
@@ -49,7 +49,7 @@ def currently__Infected(currently_Infected, val):
 
     return currentlyInfected
 
-def infectionByRequestedTime(time, x, currentlyInfected):
+def infectionsByRequestedTime(time, x, currentlyInfected):
   
   if time == 'days':        
     iBRT = currentlyInfected * (2**(x//3))
@@ -95,7 +95,7 @@ def estimator(data):
     
     currentlyInfected = values['impact']['currentlyInfected'] = currently__Infected(data['reportedCases'], 10)
 
-    iBRT = values['impact']['infectionByRequestedTime'] = infectionByRequestedTime(data['periodType'], data['timeToElapse'], currentlyInfected)
+    iBRT = values['impact']['infectionsByRequestedTime'] = infectionsByRequestedTime(data['periodType'], data['timeToElapse'], currentlyInfected)
     
     sCBRT = values['impact']['severeCasesByRequestedTime'] = severeCasesByRequestedTime(iBRT)
     
@@ -107,7 +107,7 @@ def estimator(data):
 
     
     currentlyInfected = values['severeImpact']['currentlyInfected'] = currently__Infected(data['reportedCases'], 50)
-    iBRT = values['severeImpact']['infectionByRequTime'] = infectionByRequestedTime(data['periodType'], data['timeToElapse'], currentlyInfected)    
+    iBRT = values['severeImpact']['infectionsByRequestedTime'] = infectionsByRequestedTime(data['periodType'], data['timeToElapse'], currentlyInfected)    
     sCBRT = values['severeImpact']['severeCasesByRequestedTime'] = severeCasesByRequestedTime(iBRT)
     
     values['severeImpact']['totalHospitalBeds'] = hospitalBedSpaceByRequestedTime(data['totalHospitalBeds'], sCBRT)
