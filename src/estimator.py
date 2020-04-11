@@ -93,28 +93,28 @@ def dollarsInFlight(iBRT, pop,t2E, dI):
 
 def estimator(data):
     
-    currentlyInfected = values['estimate']['impact']['currentlyInfected'] = currently__Infected(data['data']['reportedCases'], 10)
+    currentlyInfected = values['estimate']['impact']['currentlyInfected'] = currently__Infected(data['reportedCases'], 10)
 
-    iBRT = values['estimate']['impact']['infectionByRequiredTime'] = infectionByRequiredTime(data['data']['periodType'], data['data']['timeToElapse'], currentlyInfected)
+    iBRT = values['estimate']['impact']['infectionByRequiredTime'] = infectionByRequiredTime(data['periodType'], data['timeToElapse'], currentlyInfected)
     
     sCBRT = values['estimate']['impact']['severeCasesByRequiredTime'] = severeCasesByRequiredTime(iBRT)
     
-    values['estimate']['impact']['totalHospitalBeds'] = hospitalBedSpaceByRequiredTime(data['data']['totalHospitalBeds'], sCBRT)
+    values['estimate']['impact']['totalHospitalBeds'] = hospitalBedSpaceByRequiredTime(data['totalHospitalBeds'], sCBRT)
     
     values['estimate']['impact']['casesForICUByRequestedTime'] = casesForICUByRequestedTime(iBRT)
     values['estimate']['impact']['casesForVentilatorsByRequestedTime'] = casesForVentilatorsByRequestedTime(iBRT)
-    values['estimate']['impact']['dollarsInFlight'] = dollarsInFlight(iBRT, data['data']['region']['avgDailyIncomePopulation'], data['data']['timeToElapse'], data['data']['region']['avgDailyIncomeInUSD'])
+    values['estimate']['impact']['dollarsInFlight'] = dollarsInFlight(iBRT, data['region']['avgDailyIncomePopulation'], data['timeToElapse'], data['region']['avgDailyIncomeInUSD'])
 
     
-    currentlyInfected = values['estimate']['severeImpact']['currentlyInfected'] = currently__Infected(data['data']['reportedCases'], 50)
-    iBRT = values['estimate']['severeImpact']['infectionByRequiredTime'] = infectionByRequiredTime(data['data']['periodType'], data['data']['timeToElapse'], currentlyInfected)    
+    currentlyInfected = values['estimate']['severeImpact']['currentlyInfected'] = currently__Infected(data['reportedCases'], 50)
+    iBRT = values['estimate']['severeImpact']['infectionByRequiredTime'] = infectionByRequiredTime(data['periodType'], data['timeToElapse'], currentlyInfected)    
     sCBRT = values['estimate']['severeImpact']['severeCasesByRequiredTime'] = severeCasesByRequiredTime(iBRT)
     
-    values['estimate']['severeImpact']['totalHospitalBeds'] = hospitalBedSpaceByRequiredTime(data['data']['totalHospitalBeds'], sCBRT)
+    values['estimate']['severeImpact']['totalHospitalBeds'] = hospitalBedSpaceByRequiredTime(data['totalHospitalBeds'], sCBRT)
     
     values['estimate']['severeImpact']['casesForICUByRequestedTime'] = casesForICUByRequestedTime(iBRT)
     values['estimate']['severeImpact']['casesForVentilatorsByRequestedTime'] = casesForVentilatorsByRequestedTime(iBRT)
-    values['estimate']['severeImpact']['dollarsInFlight'] = dollarsInFlight(iBRT, data['data']['region']['avgDailyIncomePopulation'], data['data']['timeToElapse'], data['data']['region']['avgDailyIncomeInUSD'])
+    values['estimate']['severeImpact']['dollarsInFlight'] = dollarsInFlight(iBRT, data['region']['avgDailyIncomePopulation'], data['timeToElapse'], data['region']['avgDailyIncomeInUSD'])
     data.update(values)
 
     
