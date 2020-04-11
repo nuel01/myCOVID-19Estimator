@@ -10,9 +10,9 @@ app = Flask(__name__)
 def getInputData():
 
     dat = request.args.get('data')
-    print(type(dat))
+    #print(type(dat))
     data = ast.literal_eval(dat)
-    print(type(data))
+    #print(data)
 
 
     result = jsonify({'':estimator(data)})   
