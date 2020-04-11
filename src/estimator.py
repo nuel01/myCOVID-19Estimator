@@ -40,53 +40,26 @@ values = {
   },
 }
 }
-# reportedCases = data_reported_cases
-# population = data-population
-# timeToElapse = data-time-to-elapse
-# totalHospitalBeds = data-total-hospital-beds
-
-
-
-
-    #return reportedCases, population, timeToElapse, totalHospitalBeds
-
-
 
 # Challenge 1 
 def currentlyInfected(currentlyInfected, val):
-    #if check == 'impact':
+   
     c_i = currentlyInfected * val
-        #data['estimate']['impact']['currentlyInfected']  = impactCurrentlyInfected
+      
 
     return c_i
 
-    # elif check == 'severe':
-    #     c_i = severeImpactCurrentlyInfected = r_c * 50
-    #     #data['estimate']['severeImpact']['currentlyInfected']  = severeImpactCurrentlyInfected
-
-    #     return c_i
-
 def infectionByRequiredTime(time, x, c_i):
-  #if check == 'impact':
+  
   if time == 'days':        
     iBRT = c_i * (2**(x//3))
   elif time == 'months':
     iBRT = c_i * (2**((x*30)//3))
   elif time == 'weeks':
     iBRT = c_i * (2**((x*7)//3))
-   # data['estimate']['impact']['infectionByRequiredTime'] = iBRT
+  
 
   return iBRT
-
-  # elif check == 'severe':
-  #   if time == 'days':        
-  #     iBRT = c_i * (2**(x//3))
-  #   elif time == 'months':
-  #     iBRT = c_i * (2**((x*30)//3))
-  #   elif time == 'weeks':
-  #     iBRT = c_i * (2**((x*7)//3))
-  #   data['estimate']['severeImpact']['infectionByRequiredTime'] = iBRT
-  #   return iBRT
 
 # Challenge 2
 
@@ -117,34 +90,7 @@ def dollarsInFlight(iBRT, pop,t2E, dI):
 
     return round(dIF)
 
-'''
-def impactCase(r_c, time, t2E, tHB, pop, dI):
-    i = 'impact'
-    c_i = currentlyInfected(r_c, i)
-    iBRT = infectionByRequiredTime(time, i, t2E, c_i)
-    
-    sCBRT = data['estimate']['impact']['severeCasesByRequiredTime'] = severeCasesByRequiredTime(iBRT)
-    
-    data['estimate']['impact']['totalHospitalBeds'] = hospitalBedSpaceByRequiredTime(tHB, sCBRT)
-    
-    data['estimate']['impact']['casesForICUByRequestedTime'] = casesForICUByRequestedTime(iBRT)
-    data['estimate']['impact']['casesForVentilatorsByRequestedTime'] = casesForVentilatorsByRequestedTime(iBRT)
-    data['estimate']['impact']['dollarsInFlight'] = dollarsInFlight(iBRT, pop, t2E, dI)
 
-
-def severeImpact(r_c, time, t2E, tHB, pop, dI):
-    s = 'severe'
-    c_i = currentlyInfected(r_c, s)
-    iBRT = infectionByRequiredTime(time, s, t2E, c_i)    
-    sCBRT = data['estimate']['severeImpact']['severeCasesByRequiredTime'] = severeCasesByRequiredTime(iBRT)
-    
-    data['estimate']['severeImpact']['totalHospitalBeds'] = hospitalBedSpaceByRequiredTime(tHB, sCBRT)
-    
-    data['estimate']['severeImpact']['casesForICUByRequestedTime'] = casesForICUByRequestedTime(iBRT)
-    data['estimate']['severeImpact']['casesForVentilatorsByRequestedTime'] = casesForVentilatorsByRequestedTime(iBRT)
-    data['estimate']['severeImpact']['dollarsInFlight'] = dollarsInFlight(iBRT, pop, t2E, dI)
-
-'''
 def estimator(data):
     
     c_i = values['estimate']['impact']['currentlyInfected'] = currentlyInfected(data['data']['reportedCases'], 10)
@@ -171,11 +117,7 @@ def estimator(data):
     values['estimate']['severeImpact']['dollarsInFlight'] = dollarsInFlight(iBRT, data['data']['region']['avgDailyIncomePopulation'], data['data']['timeToElapse'], data['data']['region']['avgDailyIncomeInUSD'])
     data.update(values)
 
-    #data_supplied = data
-    # impactCase(data['data']['reportedCases'],data['data']['periodType'], data['data']['timeToElapse'], data['data']['totalHospitalBeds'], data['data']['region']['avgDailyIncomePopulation'],data['data']['region']['avgDailyIncomeInUSD'])
     
-    # severeImpact(data['data']['reportedCases'],data['data']['periodType'], data['data']['timeToElapse'], data['data']['totalHospitalBeds'],data['data']['region']['avgDailyIncomePopulation'],data['data']['region']['avgDailyIncomeInUSD'])
-
     return data
 
 #estimator(data)
