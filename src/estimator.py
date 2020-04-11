@@ -19,7 +19,7 @@ data ={
 }
 '''
 values = {
-'estimate' : {
+
 'impact': {
   'currentlyInfected': 0,
   'infectionByRequiredTime': 0,
@@ -39,7 +39,7 @@ values = {
   'dollarsInFlight': 0
   },
 }
-}
+
 
 # Challenge 1 
 def currently__Infected(currently_Infected, val):
@@ -93,34 +93,36 @@ def dollarsInFlight(iBRT, pop,t2E, dI):
 
 def estimator(data):
     
-    currentlyInfected = values['estimate']['impact']['currentlyInfected'] = currently__Infected(data['reportedCases'], 10)
+    currentlyInfected = values['impact']['currentlyInfected'] = currently__Infected(data['reportedCases'], 10)
 
-    iBRT = values['estimate']['impact']['infectionByRequiredTime'] = infectionByRequiredTime(data['periodType'], data['timeToElapse'], currentlyInfected)
+    iBRT = values['impact']['infectionByRequiredTime'] = infectionByRequiredTime(data['periodType'], data['timeToElapse'], currentlyInfected)
     
-    sCBRT = values['estimate']['impact']['severeCasesByRequiredTime'] = severeCasesByRequiredTime(iBRT)
+    sCBRT = values['impact']['severeCasesByRequiredTime'] = severeCasesByRequiredTime(iBRT)
     
-    values['estimate']['impact']['totalHospitalBeds'] = hospitalBedSpaceByRequiredTime(data['totalHospitalBeds'], sCBRT)
+    values['impact']['totalHospitalBeds'] = hospitalBedSpaceByRequiredTime(data['totalHospitalBeds'], sCBRT)
     
-    values['estimate']['impact']['casesForICUByRequestedTime'] = casesForICUByRequestedTime(iBRT)
-    values['estimate']['impact']['casesForVentilatorsByRequestedTime'] = casesForVentilatorsByRequestedTime(iBRT)
-    values['estimate']['impact']['dollarsInFlight'] = dollarsInFlight(iBRT, data['region']['avgDailyIncomePopulation'], data['timeToElapse'], data['region']['avgDailyIncomeInUSD'])
-
-    
-    currentlyInfected = values['estimate']['severeImpact']['currentlyInfected'] = currently__Infected(data['reportedCases'], 50)
-    iBRT = values['estimate']['severeImpact']['infectionByRequiredTime'] = infectionByRequiredTime(data['periodType'], data['timeToElapse'], currentlyInfected)    
-    sCBRT = values['estimate']['severeImpact']['severeCasesByRequiredTime'] = severeCasesByRequiredTime(iBRT)
-    
-    values['estimate']['severeImpact']['totalHospitalBeds'] = hospitalBedSpaceByRequiredTime(data['totalHospitalBeds'], sCBRT)
-    
-    values['estimate']['severeImpact']['casesForICUByRequestedTime'] = casesForICUByRequestedTime(iBRT)
-    values['estimate']['severeImpact']['casesForVentilatorsByRequestedTime'] = casesForVentilatorsByRequestedTime(iBRT)
-    values['estimate']['severeImpact']['dollarsInFlight'] = dollarsInFlight(iBRT, data['region']['avgDailyIncomePopulation'], data['timeToElapse'], data['region']['avgDailyIncomeInUSD'])
-    dt = { }
-    dt['data'] = {}
-    dt['data'] = data
-    dt.update(values)
+    values['impact']['casesForICUByRequestedTime'] = casesForICUByRequestedTime(iBRT)
+    values['impact']['casesForVentilatorsByRequestedTime'] = casesForVentilatorsByRequestedTime(iBRT)
+    values['impact']['dollarsInFlight'] = dollarsInFlight(iBRT, data['region']['avgDailyIncomePopulation'], data['timeToElapse'], data['region']['avgDailyIncomeInUSD'])
 
     
-    return dt
+    currentlyInfected = values['severeImpact']['currentlyInfected'] = currently__Infected(data['reportedCases'], 50)
+    iBRT = values['severeImpact']['infectionByRequiredTime'] = infectionByRequiredTime(data['periodType'], data['timeToElapse'], currentlyInfected)    
+    sCBRT = values['severeImpact']['severeCasesByRequiredTime'] = severeCasesByRequiredTime(iBRT)
+    
+    values['severeImpact']['totalHospitalBeds'] = hospitalBedSpaceByRequiredTime(data['totalHospitalBeds'], sCBRT)
+    
+    values['severeImpact']['casesForICUByRequestedTime'] = casesForICUByRequestedTime(iBRT)
+    values['severeImpact']['casesForVentilatorsByRequestedTime'] = casesForVentilatorsByRequestedTime(iBRT)
+    values['severeImpact']['dollarsInFlight'] = dollarsInFlight(iBRT, data['region']['avgDailyIncomePopulation'], data['timeToElapse'], data['region']['avgDailyIncomeInUSD'])
+    dt = data
+    data = {}
+    
+    data['data'] = {}
+    data['data'] =dt
+    data.update(values)
+
+       
+    return data
 
 #estimator(data)
