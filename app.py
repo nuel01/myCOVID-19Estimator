@@ -17,6 +17,9 @@ def getInputData():
     result = jsonify({'':estimator(data)})   
 
     return result
+@app.route('/')
+def index():
+    return "<h1> Welcome here </h1>" 
 
 
 
