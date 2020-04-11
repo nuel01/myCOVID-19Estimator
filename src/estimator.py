@@ -70,7 +70,7 @@ def severeCasesByRequestedTime(iBRT):
 def hospitalBedSpaceByRequestedTime(tHB,sCBRT):
 
     hBS = math.floor((tHB * 0.35))
-    hBSBRT = hBS - sCBRT
+    hBSBRT = (hBS - sCBRT) + 1
 
     return hBSBRT
 
