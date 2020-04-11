@@ -42,21 +42,21 @@ values = {
 }
 
 # Challenge 1 
-def currentlyInfected(currentlyInfected, val):
+def currentlyInfected(currently_Infected, val):
    
-    c_i = currentlyInfected * val
+    currentlyInfected = currently_Infected * val
       
 
-    return c_i
+    return currentlyInfected
 
-def infectionByRequiredTime(time, x, c_i):
+def infectionByRequiredTime(time, x, currentlyInfected):
   
   if time == 'days':        
-    iBRT = c_i * (2**(x//3))
+    iBRT = currentlyInfected * (2**(x//3))
   elif time == 'months':
-    iBRT = c_i * (2**((x*30)//3))
+    iBRT = currentlyInfected * (2**((x*30)//3))
   elif time == 'weeks':
-    iBRT = c_i * (2**((x*7)//3))
+    iBRT = currentlyInfected * (2**((x*7)//3))
   
 
   return iBRT
@@ -93,9 +93,9 @@ def dollarsInFlight(iBRT, pop,t2E, dI):
 
 def estimator(data):
     
-    c_i = values['estimate']['impact']['currentlyInfected'] = currentlyInfected(data['data']['reportedCases'], 10)
+    currentlyInfected = values['estimate']['impact']['currentlyInfected'] = currentlyInfected(data['data']['reportedCases'], 10)
 
-    iBRT = values['estimate']['impact']['infectionByRequiredTime'] = infectionByRequiredTime(data['data']['periodType'], data['data']['timeToElapse'], c_i)
+    iBRT = values['estimate']['impact']['infectionByRequiredTime'] = infectionByRequiredTime(data['data']['periodType'], data['data']['timeToElapse'], currentlyInfected)
     
     sCBRT = values['estimate']['impact']['severeCasesByRequiredTime'] = severeCasesByRequiredTime(iBRT)
     
