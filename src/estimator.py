@@ -116,13 +116,11 @@ def estimator(data):
     values['estimate']['severeImpact']['casesForVentilatorsByRequestedTime'] = casesForVentilatorsByRequestedTime(iBRT)
     values['estimate']['severeImpact']['dollarsInFlight'] = dollarsInFlight(iBRT, data['region']['avgDailyIncomePopulation'], data['timeToElapse'], data['region']['avgDailyIncomeInUSD'])
     dt = { }
-    dt = data
-    data = {}
-    data['data'] = {}
-    data['data'] = dt
-    data.update(values)
+    dt['data'] = {}
+    dt['data'] = data
+    dt.update(values)
 
     
-    return data
+    return dt
 
 #estimator(data)
