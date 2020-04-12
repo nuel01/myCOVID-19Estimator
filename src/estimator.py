@@ -110,7 +110,7 @@ def estimator(data):
     
     values['impact']['casesForICUByRequestedTime'] = casesForICUByRequestedTime(iBRT)
     values['impact']['casesForVentilatorsByRequestedTime'] = casesForVentilatorsByRequestedTime(iBRT)
-    values['impact']['dollarsInFlight'] = dollarsInFlight(iBRT, data['region']['avgDailyIncomePopulation'], data['timeToElapse'], data['region']['avgDailyIncomeInUSD']. data['periodType'])
+    values['impact']['dollarsInFlight'] = dollarsInFlight(iBRT, data['region']['avgDailyIncomePopulation'], data['timeToElapse'], data['region']['avgDailyIncomeInUSD'], data['periodType'])
 
     
     currentlyInfected = values['severeImpact']['currentlyInfected'] = currently__Infected(data['reportedCases'], 50)
