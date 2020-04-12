@@ -85,8 +85,15 @@ def casesForVentilatorsByRequestedTime(iBRT):
 
     return c4Vent
 
-def dollarsInFlight(iBRT, pop,t2E, dI):
-    dIF = (iBRT * pop * dI)/t2E
+def dollarsInFlight(iBRT, pop,t2E, dI, time):
+    if time == 'days':
+      dIF = (iBRT * pop * dI)/t2E
+    elif time == 'weeks':
+      dIF = (iBRT * pop * dI)/(t2E*7)
+    elif time == 'months':
+      dIF = (iBRT * pop * dI)/(t2E*30)
+
+
 
     return math.floor((dIF))
 
@@ -103,7 +110,7 @@ def estimator(data):
     
     values['impact']['casesForICUByRequestedTime'] = casesForICUByRequestedTime(iBRT)
     values['impact']['casesForVentilatorsByRequestedTime'] = casesForVentilatorsByRequestedTime(iBRT)
-    values['impact']['dollarsInFlight'] = dollarsInFlight(iBRT, data['region']['avgDailyIncomePopulation'], data['timeToElapse'], data['region']['avgDailyIncomeInUSD'])
+    values['impact']['dollarsInFlight'] = dollarsInFlight(iBRT, data['region']['avgDailyIncomePopulation'], data['timeToElapse'], data['region']['avgDailyIncomeInUSD']. data['periodType'])
 
     
     currentlyInfected = values['severeImpact']['currentlyInfected'] = currently__Infected(data['reportedCases'], 50)
@@ -114,7 +121,7 @@ def estimator(data):
     
     values['severeImpact']['casesForICUByRequestedTime'] = casesForICUByRequestedTime(iBRT)
     values['severeImpact']['casesForVentilatorsByRequestedTime'] = casesForVentilatorsByRequestedTime(iBRT)
-    values['severeImpact']['dollarsInFlight'] = dollarsInFlight(iBRT, data['region']['avgDailyIncomePopulation'], data['timeToElapse'], data['region']['avgDailyIncomeInUSD'])
+    values['severeImpact']['dollarsInFlight'] = dollarsInFlight(iBRT, data['region']['avgDailyIncomePopulation'], data['timeToElapse'], data['region']['avgDailyIncomeInUSD'], data['periodType'])
     dt = data
     data = {}
     
