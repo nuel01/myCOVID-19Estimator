@@ -66,7 +66,7 @@ def log_request(response):
         ("ms")]
 
     for ele in str(log_params[3]):
-        if ele == '0.' or ele == '.':
+        if ele == '0.' or ele == '.' :
             log_params[3] = str(log_params[3]).replace(ele, "")
     
     log_params[3] = str(log_params[3])+str(log_params[4])
