@@ -26,11 +26,8 @@ def getInputData():
     # #xmlfile.mimetype = "text/xml"
     # xmlfile = open("students.xml", "r")
     # for x in xmlfile:
-    #     if x == '<root>':
-    #         x = ''
-    #         return x
-    #     else:
-    #         return x
+    #    
+    #     return x
     
 @app.route('/')
 @app.route('/api/v1/on-covid-19', methods = ['POST'])

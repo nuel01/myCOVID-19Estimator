@@ -131,5 +131,3 @@ def estimator(data):
 
        
     return data
-
-#estimator(data)
