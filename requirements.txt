@@ -1,3 +1,4 @@
+asteval==0.9.18
 astroid==1.6.1
 astropy==2.0.3
 Flask==0.12.2
