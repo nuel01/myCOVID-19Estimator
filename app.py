@@ -7,7 +7,7 @@ import time
 import logging
 import json
 app = Flask(__name__)
-
+#
 
 @app.route('/')
 @app.route('/api/v1/on-covid-19/xml', methods = ['POST','GET'])
@@ -16,7 +16,7 @@ def getInputData():
     data = ast.literal_eval(dat)
     result = estimator(data)
     xml = dicttoxml(result, attr_type=False)
-    print(type(xml))
+    
     r = make_response(xml)
     r.headers["Content-Type"] = "application/xml; charset=utf-8"
     return r
@@ -72,7 +72,7 @@ def log_request(response):
 
     with open('log.txt', 'a') as logfile:        
         pp = json.dumps(log_params, separators=("\t\t","\n"))
-        print(pp,file=logfile)
+       
     logfile.close()
             
     return response
