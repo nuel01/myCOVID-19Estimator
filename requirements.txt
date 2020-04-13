@@ -3,6 +3,7 @@ astropy==2.0.3
 Flask==0.12.2
 Flask-Cors==3.0.3
 gunicorn==20.0.4
+dicttoxml==1.7.4
 path.py==10.5
 pathlib2==2.3.0
 py==1.5.2
