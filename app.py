@@ -10,7 +10,7 @@ app = Flask(__name__)
 
 
 @app.route('/')
-@app.route('/api/v1/on-covid-19/xml', methods = ['POST'])
+@app.route('/api/v1/on-covid-19/xml', methods = ['POST','GET'])
 def getInputData():
     dat = request.args.get('data')
     data = ast.literal_eval(dat)
@@ -23,7 +23,7 @@ def getInputData():
    
     
 @app.route('/')
-@app.route('/api/v1/on-covid-19', methods = ['POST'])
+@app.route('/api/v1/on-covid-19', methods = ['POST','GET'])
 def getInputData2():    
     dat = request.args.get('data')
     data = ast.literal_eval(dat)
@@ -31,7 +31,7 @@ def getInputData2():
     
     return result
 @app.route('/')
-@app.route('/api/v1/on-covid-19/json', methods = ['POST'])
+@app.route('/api/v1/on-covid-19/json', methods = ['POST','GET'])
 def getInputData3():    
     dat = request.args.get('data')
     data = ast.literal_eval(dat)
@@ -77,7 +77,7 @@ def log_request(response):
             
     return response
 
-@app.route('/api/v1/on-covid-19/logs', methods=['GET'])
+@app.route('/api/v1/on-covid-19/logs', methods=['GET','POST'])
 def getLog():
     test ='[]"'
     with open('log.txt', 'rt') as f:
