@@ -74,7 +74,7 @@ def hospitalBedSpaceByRequestedTime(tHB,sCBRT):
 
     return hBSBRT
 
-# Challenge 3
+#Challenge 3
 
 def casesForICUByRequestedTime(iBRT):
     c4ICU = math.floor((iBRT * 0.05))
