@@ -77,10 +77,6 @@ def log_request(response):
     log_params[3] = str(log_params[3])+str(log_params[4])
     log_params.pop(4)
 
-    request_id = request.headers.get('X-Request-ID')
-    if request_id:
-        log_params.append(('request_id', request_id, 'yellow'))
-    
     with open('log.txt', 'a') as logfile:        
         pp = json.dumps(log_params, separators=("\t\t","\n"))
         print(pp,file=logfile)
