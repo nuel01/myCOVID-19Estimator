@@ -1,0 +1,28 @@
+POST		/api/v1/on-covid-19/xml		200		0.03		POST		/api/v1/on-covid-19/xml		200		0.04		
+POST		/api/v1/on-covid-19/xml		200		0.03		POST		/api/v1/on-covid-19/xml		200		0.04		
+POST		/api/v1/on-covid-19/xml		200		0.03		POST		/api/v1/on-covid-19/xml		200		0.04		
+
+
+
+POST		/api/v1/on-covid-19/xml		200		0.01		
+POST		/api/v1/on-covid-19/xml		200		0.01		
+POST		/api/v1/on-covid-19/xml		200		0.01		
+
+
+
+POST		/api/v1/on-covid-19/xml		200		0.03		
+POST		/api/v1/on-covid-19/xml		200		0.03		
+POST		/api/v1/on-covid-19/xml		200		0.03		
+
+
+
+POST		/api/v1/on-covid-19/xml		200		0.01		
+POST		/api/v1/on-covid-19/xml		200		0.01		
+POST		/api/v1/on-covid-19/xml		200		0.01		
+
+
+
+POST		/api/v1/on-covid-19/xml		200		0.04		
+POST		/api/v1/on-covid-19/xml		200		0.04		
+POST		/api/v1/on-covid-19/xml		200		0.04		
+
