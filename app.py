@@ -20,14 +20,7 @@ def getInputData():
     r = make_response(xml)
     r.headers["Content-Type"] = "application/xml; charset=utf-8"
     return r
-    # xmlfile = open("students.xml", "w")
-    # xmlfile.write(xml.decode())
-    # xmlfile.close()
-    # #xmlfile.mimetype = "text/xml"
-    # xmlfile = open("students.xml", "r")
-    # for x in xmlfile:
-    #    
-    #     return x
+   
     
 @app.route('/')
 @app.route('/api/v1/on-covid-19', methods = ['POST'])
