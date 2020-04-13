@@ -6,6 +6,8 @@ import datetime
 import time
 import logging
 import json
+from asteval import Interpreter
+aeval = Interpreter()
 app = Flask(__name__)
 #
 
@@ -13,7 +15,7 @@ app = Flask(__name__)
 @app.route('/api/v1/on-covid-19/xml', methods = ['POST','GET'])
 def getInputData():
     dat = request.args.get('data')
-    data = ast.literal_eval(dat)
+    data = aeval(dat)
     result = estimator(data)
     xml = dicttoxml(result, attr_type=False)
     
@@ -26,7 +28,7 @@ def getInputData():
 @app.route('/api/v1/on-covid-19', methods = ['POST','GET'])
 def getInputData2():    
     dat = request.args.get('data')
-    data = ast.literal_eval(dat)
+    data = aeval(dat)
     result = jsonify(estimator(data))
     
     return result
@@ -34,7 +36,7 @@ def getInputData2():
 @app.route('/api/v1/on-covid-19/json', methods = ['POST','GET'])
 def getInputData3():    
     dat = request.args.get('data')
-    data = ast.literal_eval(dat)
+    data = aeval(dat)
     result = jsonify(estimator(data))
     
     return result
@@ -88,4 +90,4 @@ def getLog():
 
 
 if __name__=='__main__':
-    app.run(debug=True)
+    app.run(debug=True, port=9000)
