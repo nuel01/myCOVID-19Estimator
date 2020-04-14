@@ -10,15 +10,26 @@ from asteval import Interpreter
 aeval = Interpreter()
 app = Flask(__name__)
 #
+@app.route('/', methods = ['POST','GET'])
+def index():
+    result = jsonify({'message': 'COVID-19 Estimator.'})
+    r = make_response(result)
+    r.headers["Content-Type"] = "application/json; charset=utf-8"
+    return r
+
 
 @app.route('/')
 @app.route('/api/v1/on-covid-19/xml', methods = ['POST','GET'])
 def getInputData():
-    dat = request.args.get('data')
-    data = aeval(dat)
-    result = estimator(data)
-    xml = dicttoxml(result, attr_type=False)
-    
+    if request.method == 'POST':
+        dat = request.args.get('data')
+        data = aeval(dat)
+        result = estimator(data)
+        xml = dicttoxml(result, attr_type=False)
+    else:
+        res = {'message': 'Send data as POST to get estimate.'}
+        xml = dicttoxml(res, attr_type=False)
+        
     r = make_response(xml)
     r.headers["Content-Type"] = "application/xml; charset=utf-8"
     return r
@@ -26,20 +37,28 @@ def getInputData():
     
 @app.route('/')
 @app.route('/api/v1/on-covid-19', methods = ['POST','GET'])
-def getInputData2():    
-    dat = request.args.get('data')
-    data = aeval(dat)
-    result = jsonify(estimator(data))
-    
-    return result
+def getInputData2():
+    if request.method == 'POST':    
+        dat = request.args.get('data')
+        data = aeval(dat)
+        result = jsonify(estimator(data))
+    else:
+        result = jsonify({'message': 'Send data as POST to get estimate.'})
+    r = make_response(result)
+    r.headers["Content-Type"] = "application/json; charset=utf-8"
+    return r
 @app.route('/')
 @app.route('/api/v1/on-covid-19/json', methods = ['POST','GET'])
 def getInputData3():    
-    dat = request.args.get('data')
-    data = aeval(dat)
-    result = jsonify(estimator(data))
-    
-    return result
+    if request.method == 'POST':    
+        dat = request.args.get('data')
+        data = aeval(dat)
+        result = jsonify(estimator(data))
+    else:
+        result = jsonify({'message': 'Send data as POST to get estimate.'})
+    r = make_response(result)
+    r.headers["Content-Type"] = "application/json; charset=utf-8"
+    return r
 
 @app.route('/')
 
@@ -86,8 +105,9 @@ def getLog():
     with open('log.txt', 'rt') as f:
         gg = f.read()
         gg = ''.join(' ' if ch in test else ch for ch in gg)
-       
-        return gg
+        r = make_response(gg)
+        r.headers["Content-Type"] = "text/plain; charset=utf-8"
+        return r
 
 
 if __name__=='__main__':
