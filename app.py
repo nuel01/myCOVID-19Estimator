@@ -9,7 +9,7 @@ import json
 from asteval import Interpreter
 aeval = Interpreter()
 app = Flask(__name__)
-#
+
 @app.route('/', methods = ['POST','GET'])
 def index():
     result = jsonify({'message': 'COVID-19 Estimator.'})
@@ -111,4 +111,4 @@ def getLog():
 
 
 if __name__=='__main__':
-    app.run(debug=True, port=9000)
+    app.run()
