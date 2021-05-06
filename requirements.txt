@@ -2,7 +2,7 @@ asteval==0.9.18
 astroid==1.6.1
 astropy==2.0.3
 Flask==0.12.2
-Flask-Cors==3.0.3
+Flask-Cors==3.0.9
 gunicorn==20.0.4
 dicttoxml==1.7.4
 path.py==10.5
